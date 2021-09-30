@@ -1,6 +1,6 @@
 # Project ESN
 
-Mise en place des bonnes pratiques sur un projet fraîchement acquis
+Implementation of best practices on a newly acquired project
 
 ## Getting started
 
