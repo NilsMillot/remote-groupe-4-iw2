@@ -31,5 +31,29 @@
         ]
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    {
+        "extra": {
+            "hooks": {
+                "pre-commit": [
+                    "echo committing as $(git config user.name)",
+                    "php-cs-fixer fix ."
+                ],
+                "commit-msg": "grep -q '[A-Z]+-[0-9]+.*' $1",
+                "pre-push": [
+                    "php-cs-fixer fix --dry-run .",
+                    "phpunit"
+                ],
+                "post-merge": "composer install",
+                
+                "config": {
+                    "custom-hooks": ["pre-flow-feature-start"]
+                },
+                "pre-flow-feature-start": [
+                    "echo 'Starting a new feature...'"
+                ]
+            }
+        }
+    }
+    
 }
